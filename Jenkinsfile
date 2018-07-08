@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("patricia92fa/r-models/docker")
+        app = docker.build("r-model", "-f docker/Dockerfile")
     }
 
     stage('Test image') {
