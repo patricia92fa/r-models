@@ -1,5 +1,5 @@
 node {
-    def app
+    def docker_img
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -16,9 +16,9 @@ node {
 
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
+         * For this example, we're using a Volkswagen-type docker_imgroach ;-) */
 
-        app.inside {
+        docker_img.inside {
             sh 'echo "Tests passed"'
         }
     }
