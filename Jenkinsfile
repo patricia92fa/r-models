@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        docker_img = docker.build("r-model", "./docker/")
+        docker_img = docker.build("patricia92fa/r-model", "./docker/")
     }
 
     stage('Test image') {
@@ -29,7 +29,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            docker_img.push("patricia92fa/${env.BUILD_NUMBER}")
+            docker_img.push("${env.BUILD_NUMBER}")
         }
     }
 }
