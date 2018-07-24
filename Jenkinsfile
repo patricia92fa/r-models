@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        docker_img = docker.build("/admin/jenkins-ia", "./docker/")
+        docker_img = docker.build("admin/jenkins-ia", "./docker/")
     }
 
     stage('Test image') {
