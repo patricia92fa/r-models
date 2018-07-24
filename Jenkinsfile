@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        docker_img = docker.build("patricia92fa/r-model", "./docker/")
+        docker_img = docker.build("/admin/jenkins-ia", "./docker/")
     }
 
     stage('Test image') {
@@ -28,7 +28,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+        docker.withRegistry('push docker-registry:5000/admin/jenkins-ia') {
             docker_img.push("${env.BUILD_NUMBER}")
         }
     }
