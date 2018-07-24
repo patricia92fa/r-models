@@ -28,7 +28,7 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('push docker-registry:5000/admin/jenkins-ia') {
+        docker.withRegistry('docker-registry:5000/admin/jenkins-ia') {
             docker_img.push("${env.BUILD_NUMBER}")
         }
     }
